@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-brand-primary: #D6FB61;
+  --color-brand-primary-hover: #C4E84F;
+  --color-brand-secondary: #39B1D1;
+  --color-brand-secondary-hover: #2A9DBD;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg-color: #FFFFFF;
+    --text-color: #111827;
+    --text-color-secondary: #6B7280;
+    --border-color: #E5E7EB;
+    --surface-color: #FFFFFF;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .dark {
+    --bg-color: #333333;
+    --text-color: #FFFFFF;
+    --text-color-secondary: #D1D5DB;
+    --border-color: #4B4B4B;
+    --surface-color: #3D3D3D;
+  }
+
+  body {
+    font-family: var(--sans);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-brand-primary;
+  }
+}
