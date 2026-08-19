@@ -17,48 +17,108 @@ export const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+
   const inputId = id || label.toLowerCase().replace(/\s+/g, '-');
-  
+
   const isPassword = type === 'password';
   const currentType = isPassword && showPassword ? 'text' : type;
 
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
+
+      {/* Label */}
       <div className="flex justify-between items-center">
-        <label htmlFor={inputId} className="text-sm font-medium text-text-primary">
+
+        <label
+          htmlFor={inputId}
+          className="text-sm font-medium text-text-primary"
+        >
           {label}
         </label>
+
         {rightElement && (
           <div className="text-sm">
             {rightElement}
           </div>
         )}
+
       </div>
+
+      {/* Input */}
       <div className="relative">
+
         <input
           id={inputId}
           type={currentType}
           className={`
-            w-full bg-surface border border-border rounded-xl px-4 py-3 text-text-primary text-sm
+            w-full
+            bg-surface
+            border
+            rounded-xl
+            px-4
+            py-3
+            text-text-primary
+            text-sm
             placeholder:text-text-tertiary
-            focus:outline-none focus:ring-1 focus:ring-brand-primary focus:border-transparent
-            transition-colors
+
+            ${error
+              ? `
+                border-red-500
+                focus:ring-red-500
+                focus:border-red-500
+              `
+              : `
+                border-border
+                focus:outline-none
+                focus:ring-2
+                focus:ring-brand-primary/30
+                focus:border-brand-primary
+              `
+            }
+
+            transition-all
+            duration-200
+
             ${isPassword ? 'pr-10' : ''}
-            ${error ? 'border-red-500 focus:ring-red-500' : ''}
           `}
           {...props}
         />
+
+        {/* Password Toggle */}
         {isPassword && (
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-text-tertiary hover:text-text-secondary cursor-pointer"
+            className="
+              absolute
+              right-3
+              top-1/2
+              -translate-y-1/2
+              text-text-tertiary
+              hover:text-brand-primary
+              transition-colors
+              cursor-pointer
+              focus:outline-none
+            "
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
-            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            {showPassword ? (
+              <EyeOff size={18} />
+            ) : (
+              <Eye size={18} />
+            )}
           </button>
         )}
+
       </div>
-      {error && <span className="text-xs text-red-500">{error}</span>}
+
+      {/* Error */}
+      {error && (
+        <span className="text-xs text-red-500">
+          {error}
+        </span>
+      )}
+
     </div>
   );
 };

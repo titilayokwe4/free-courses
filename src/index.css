@@ -48,3 +48,21 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-secondary to-brand-primary;
   }
 }
+
+@keyframes learner-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.learner-scroll {
+  animation: learner-scroll 40s linear infinite;
+}
+
+.learner-scroll:hover {
+  animation-play-state: paused;
+}

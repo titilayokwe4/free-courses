@@ -37,23 +37,42 @@ export const CourseCard: React.FC<CourseCardProps> = ({
 
   const isBeginner = level.toLowerCase() === 'beginner';
   const isIntermediate = level.toLowerCase() === 'intermediate';
-  
-  let levelColor = 'bg-red-50 text-red-600 dark:bg-red-950/20 dark:text-red-400'; // default/advanced
-  if (isBeginner) levelColor = 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950/20 dark:text-emerald-400';
-  if (isIntermediate) levelColor = 'bg-amber-50 text-amber-600 dark:bg-amber-950/20 dark:text-amber-400';
 
-  const isAdded = cartItems.some((item) => item.title.toLowerCase() === title.toLowerCase());
-  const slug = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  // Course level colours
+  let levelColor =
+    'bg-red-50 text-red-600 dark:bg-red-950/20 dark:text-red-400';
+
+  if (isBeginner) {
+    levelColor =
+      'bg-brand-secondary/10 text-brand-secondary dark:bg-brand-secondary/15 dark:text-brand-secondary';
+  }
+
+  if (isIntermediate) {
+    levelColor =
+      'bg-brand-primary/15 text-[#333333] dark:bg-brand-primary/15 dark:text-brand-primary';
+  }
+
+  const isAdded = cartItems.some(
+    (item) => item.title.toLowerCase() === title.toLowerCase()
+  );
+
+  const slug =
+    id ||
+    title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
-    if (isAdded) return; // Don't add again
-    
-    // Parse numeric price from string (e.g. "₦15,000" or "N15,000")
-    const numericPrice = parseInt(price.replace(/[^0-9]/g, '')) || 15000;
-    
+
+    if (isAdded) return;
+
+    // Parse numeric price from string
+    const numericPrice =
+      parseInt(price.replace(/[^0-9]/g, '')) || 15000;
+
     addToCart({
       title,
       instructor,
@@ -67,81 +86,218 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   };
 
   return (
-    <div 
+    <div
       onClick={handleCardClick}
-      className="bg-white dark:bg-[#11143B] border border-gray-200 dark:border-[#23264A] rounded-2xl overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-300 cursor-pointer text-left"
+      className="
+        bg-white
+        dark:bg-[#333333]
+        border
+        border-gray-200
+        dark:border-white/10
+        rounded-2xl
+        overflow-hidden
+        flex
+        flex-col
+        group
+        hover:shadow-xl
+        transition-all
+        duration-300
+        cursor-pointer
+        text-left
+      "
     >
-      {/* Image container with hover scale and cart icon */}
+
+      {/* Image Container */}
       <div className="relative h-40 overflow-hidden">
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+
+        <img
+          src={image}
+          alt={title}
+          className="
+            w-full
+            h-full
+            object-cover
+            transition-transform
+            duration-500
+            group-hover:scale-110
+          "
         />
-        
+
+        {/* Course Badge */}
         {badge && (
-          <div className="absolute top-3 left-3 bg-brand-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+          <div
+            className="
+              absolute
+              top-3
+              left-3
+              bg-brand-primary
+              text-[#333333]
+              text-xs
+              font-semibold
+              px-2.5
+              py-1
+              rounded-full
+            "
+          >
             {badge}
           </div>
         )}
-        
+
         {/* Hover Cart Icon */}
-        <div 
+        <div
           onClick={handleAddToCart}
-          className={`absolute bottom-3 right-3 text-white p-2.5 rounded-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg cursor-pointer ${
-            isAdded
-              ? 'bg-emerald-500 hover:bg-emerald-600'
-              : 'bg-brand-primary hover:bg-brand-primary-hover'
-          }`}
+          className={`
+            absolute
+            bottom-3
+            right-3
+            p-2.5
+            rounded-full
+            opacity-0
+            translate-y-4
+            group-hover:opacity-100
+            group-hover:translate-y-0
+            transition-all
+            duration-300
+            shadow-lg
+            cursor-pointer
+            ${
+              isAdded
+                ? 'bg-brand-secondary text-[#333333] hover:bg-brand-secondary-hover'
+                : 'bg-brand-primary text-[#333333] hover:bg-brand-primary-hover'
+            }
+          `}
         >
-          {isAdded ? <Check size={18} /> : <ShoppingCart size={18} />}
+          {isAdded ? (
+            <Check size={18} />
+          ) : (
+            <ShoppingCart size={18} />
+          )}
         </div>
       </div>
 
+
+      {/* Card Content */}
       <div className="p-5 flex flex-col flex-grow">
+
+        {/* Level + Category */}
         <div className="flex items-center gap-3 mb-3">
-          <span className={`text-xs font-semibold px-2 py-0.5 rounded-md ${levelColor}`}>
+
+          <span
+            className={`text-xs font-semibold px-2 py-0.5 rounded-md ${levelColor}`}
+          >
             {level}
           </span>
-          <span className="text-xs text-gray-500 dark:text-gray-400">{category}</span>
+
+          <span className="text-xs text-gray-500 dark:text-gray-300">
+            {category}
+          </span>
+
         </div>
-        
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white leading-tight mb-1 line-clamp-2">
+
+
+        {/* Course Title */}
+        <h3
+          className="
+            text-sm
+            font-semibold
+            text-gray-900
+            dark:text-white
+            leading-tight
+            mb-1
+            line-clamp-2
+          "
+        >
           {title}
         </h3>
-        
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{instructor}</p>
-        
+
+
+        {/* Instructor */}
+        <p className="text-sm text-gray-500 dark:text-gray-300 mb-3">
+          {instructor}
+        </p>
+
+
+        {/* Rating */}
         <div className="flex items-center gap-1.5 mb-3">
-          <span className="text-sm font-bold text-amber-500">{rating.toFixed(1)}</span>
-          <div className="flex text-amber-400">
+
+          <span className="text-sm font-bold text-brand-secondary">
+            {rating.toFixed(1)}
+          </span>
+
+          <div className="flex text-brand-primary">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} fill={i < Math.floor(rating) ? "currentColor" : "none"} />
+              <Star
+                key={i}
+                size={14}
+                fill={
+                  i < Math.floor(rating)
+                    ? 'currentColor'
+                    : 'none'
+                }
+              />
             ))}
           </div>
-          <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">({reviews.toLocaleString()})</span>
+
+          <span className="text-xs text-gray-500 dark:text-gray-300 ml-1">
+            ({reviews.toLocaleString()})
+          </span>
+
         </div>
-        
-        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 mb-5">
+
+
+        {/* Duration + Students */}
+        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-300 mb-5">
+
           <div className="flex items-center gap-1">
             <Clock size={14} />
             <span>{duration}</span>
           </div>
+
           <div className="flex items-center gap-1">
             <Users size={14} />
             <span>{students.toLocaleString()}</span>
           </div>
+
         </div>
-        
-        <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100 dark:border-[#23264A]">
-          <span className="text-md font-bold text-gray-900 dark:text-white">{price}</span>
-          <button 
+
+
+        {/* Price + Add Button */}
+        <div
+          className="
+            mt-auto
+            flex
+            items-center
+            justify-between
+            pt-4
+            border-t
+            border-gray-100
+            dark:border-white/10
+          "
+        >
+
+          <span className="text-md font-bold text-gray-900 dark:text-white">
+            {price}
+          </span>
+
+          <button
             onClick={handleAddToCart}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer text-white ${
-              isAdded
-                ? 'bg-[#1ABC9C] hover:bg-[#16A085]'
-                : 'bg-brand-primary hover:bg-brand-primary-hover'
-            }`}
+            className={`
+              flex
+              items-center
+              gap-1.5
+              px-3
+              py-1.5
+              rounded-lg
+              text-xs
+              font-medium
+              transition-colors
+              cursor-pointer
+              ${
+                isAdded
+                  ? 'bg-brand-secondary text-[#333333] hover:bg-brand-secondary-hover'
+                  : 'bg-brand-primary text-[#333333] hover:bg-brand-primary-hover'
+              }
+            `}
           >
             {isAdded ? (
               <>
@@ -155,7 +311,9 @@ export const CourseCard: React.FC<CourseCardProps> = ({
               </>
             )}
           </button>
+
         </div>
+
       </div>
     </div>
   );

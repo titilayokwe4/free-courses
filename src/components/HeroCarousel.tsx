@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  ArrowRight,
+  Award,
+  Calendar,
+  CheckCircle,
+  CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Monitor,
-  Calendar,
-  Star,
-  Radio,
-  Award,
   Globe,
-  CheckCircle2,
-  ArrowRight,
+  Monitor,
+  Radio,
+  Star,
   Zap,
-  CheckCircle
 } from 'lucide-react';
+
 import { Button } from './Button';
 
 export const HeroCarousel: React.FC = () => {
@@ -44,7 +45,7 @@ export const HeroCarousel: React.FC = () => {
     <div className="relative w-full overflow-hidden h-[600px]">
 
       {/* =========================================================
-          SLIDE 1: STARTER
+          SLIDE 1: LEARN
       ========================================================= */}
       <div
         className={`absolute inset-0 w-full h-full bg-brand-secondary/10 transition-opacity duration-1000 ease-in-out ${
@@ -53,35 +54,36 @@ export const HeroCarousel: React.FC = () => {
             : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
 
             {/* Left Content */}
             <div className="flex flex-col justify-center">
 
-              <div className="mb-6 inline-flex items-center gap-2 bg-brand-secondary/10 text-brand-secondary px-3 py-1.5 rounded-full text-sm font-semibold">
+              <div className="mb-6 inline-flex items-center gap-2 bg-brand-secondary/10 text-brand-secondary px-3 py-1.5 rounded-full text-sm font-semibold border border-brand-secondary/20">
                 <Monitor size={16} />
-                Most Popular
+                Start your journey
               </div>
 
-              <h1 className="text-5xl font-bold text-gray-900 mb-4">
-                Starter
+              <h1 className="text-5xl font-bold text-[#333333] mb-4">
+                Learn skills that move you forward
               </h1>
 
-              <p className="text-lg text-gray-500 mb-8">
-                Perfect for beginners exploring new skills
+              <p className="text-lg text-gray-600 mb-8">
+                Begin with practical knowledge, discover your strengths, and
+                take your first step toward a brighter future.
               </p>
 
-              <ul className="space-y-4 mb-10 text-gray-600">
+              <ul className="space-y-4 mb-10 text-gray-700">
                 {[
-                  'Access to 50+ beginner courses',
-                  'Certificate of completion',
-                  'Mobile app access'
+                  'Practical courses for today’s opportunities',
+                  'Learn at your own pace, from anywhere',
+                  'Build confidence through real skills',
                 ].map((text, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <CheckCircle2
                       size={20}
-                      className="text-brand-secondary"
+                      className="text-brand-secondary flex-shrink-0"
                     />
                     {text}
                   </li>
@@ -89,38 +91,36 @@ export const HeroCarousel: React.FC = () => {
               </ul>
 
               <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold text-gray-900">
-                  ₦12.99
+                <span className="text-4xl font-bold text-[#333333]">
+                  Start learning
                 </span>
 
                 <span className="text-gray-500">
-                  /month
+                  today
                 </span>
 
-                <span className="ml-2 bg-brand-secondary/10 text-brand-secondary px-2 py-1 rounded text-xs font-semibold">
-                  Save 20% yearly
+                <span className="ml-2 bg-brand-primary/20 text-[#333333] px-2 py-1 rounded text-xs font-semibold">
+                  Open to every ambitious learner
                 </span>
               </div>
 
               <div className="flex items-center gap-4">
-
                 <Button
                   className="!bg-brand-primary hover:!bg-brand-primary-hover !text-[#333333] !rounded-lg"
                   icon={<Zap size={18} fill="currentColor" />}
                   size="lg"
                 >
-                  Get started
+                  Start learning
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="!bg-transparent border-gray-300 text-gray-900 !rounded-lg"
+                  className="!bg-transparent !border-[#333333]/20 !text-[#333333] hover:!bg-white !rounded-lg"
                   size="lg"
                 >
-                  Compare plans
+                  Explore courses
                   <ArrowRight size={18} className="ml-1" />
                 </Button>
-
               </div>
             </div>
 
@@ -159,9 +159,8 @@ export const HeroCarousel: React.FC = () => {
         </div>
       </div>
 
-
       {/* =========================================================
-          SLIDE 2: PRO
+          SLIDE 2: EQUIP YOURSELF
       ========================================================= */}
       <div
         className={`absolute inset-0 w-full h-full bg-brand-primary/10 transition-opacity duration-1000 ease-in-out ${
@@ -170,7 +169,7 @@ export const HeroCarousel: React.FC = () => {
             : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
 
             {/* Left Content */}
@@ -178,36 +177,37 @@ export const HeroCarousel: React.FC = () => {
 
               <div className="flex gap-3 mb-6">
 
-                <div className="inline-flex items-center gap-2 bg-brand-secondary/10 text-brand-secondary px-3 py-1.5 rounded-full text-sm font-semibold">
+                <div className="inline-flex items-center gap-2 bg-brand-secondary/10 text-brand-secondary px-3 py-1.5 rounded-full text-sm font-semibold border border-brand-secondary/20">
                   <Calendar size={16} />
-                  Pay Once
+                  Learn by doing
                 </div>
 
                 <div className="inline-flex items-center gap-2 bg-brand-primary text-[#333333] px-3 py-1.5 rounded-full text-sm font-semibold">
                   <Star size={16} fill="currentColor" />
-                  Most Popular
+                  Build your edge
                 </div>
 
               </div>
 
-              <h1 className="text-5xl font-bold text-gray-900 mb-4">
-                Pro
+              <h1 className="text-5xl font-bold text-[#333333] mb-4">
+                Equip yourself for what’s next
               </h1>
 
-              <p className="text-lg text-gray-500 mb-8">
-                For serious learners who want unlimited access
+              <p className="text-lg text-gray-600 mb-8">
+                Go beyond theory with the knowledge, tools, and confidence to
+                grow in school, work, and business.
               </p>
 
-              <ul className="space-y-4 mb-10 text-gray-600">
+              <ul className="space-y-4 mb-10 text-gray-700">
                 {[
-                  'Access to 400+ courses',
-                  'All skill levels included',
-                  'Offline downloads'
+                  'Learn in-demand digital and professional skills',
+                  'Practice with projects and real-world challenges',
+                  'Keep growing with guided learning',
                 ].map((text, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <CheckCircle2
                       size={20}
-                      className="text-brand-primary"
+                      className="text-brand-primary flex-shrink-0"
                     />
                     {text}
                   </li>
@@ -215,19 +215,17 @@ export const HeroCarousel: React.FC = () => {
               </ul>
 
               <div className="flex items-baseline gap-2 mb-8">
-
-                <span className="text-4xl font-bold text-gray-900">
-                  ₦29.99
+                <span className="text-4xl font-bold text-[#333333]">
+                  Skills for
                 </span>
 
                 <span className="text-gray-500">
-                  /month
+                  your next opportunity
                 </span>
 
                 <span className="ml-2 bg-brand-secondary/10 text-brand-secondary px-2 py-1 rounded text-xs font-semibold">
-                  Save 20% yearly
+                  Learn. Practise. Progress.
                 </span>
-
               </div>
 
               <div className="flex items-center gap-4">
@@ -237,15 +235,15 @@ export const HeroCarousel: React.FC = () => {
                   icon={<Zap size={18} fill="currentColor" />}
                   size="lg"
                 >
-                  Get started
+                  Equip yourself
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="!bg-transparent border-gray-300 text-gray-900 !rounded-lg"
+                  className="!bg-transparent !border-[#333333]/20 !text-[#333333] hover:!bg-white !rounded-lg"
                   size="lg"
                 >
-                  Compare plans
+                  Find your path
                   <ArrowRight size={18} className="ml-1" />
                 </Button>
 
@@ -254,8 +252,7 @@ export const HeroCarousel: React.FC = () => {
 
             {/* Right Content */}
             <div className="hidden md:flex items-center justify-center relative">
-
-              <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden p-2">
+              <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden p-2 border border-brand-primary/20">
 
                 <img
                   src="/feature-courses/feature1.jpeg"
@@ -264,19 +261,15 @@ export const HeroCarousel: React.FC = () => {
                 />
 
                 <div className="p-6">
+                  <div className="h-4 bg-gray-100 rounded-full w-3/4 mb-3" />
 
-                  <div className="h-4 bg-gray-100 rounded-full w-3/4 mb-3"></div>
-
-                  <div className="h-4 bg-gray-100 rounded-full w-1/2 mb-6"></div>
+                  <div className="h-4 bg-gray-100 rounded-full w-1/2 mb-6" />
 
                   <div className="flex justify-between items-center">
+                    <div className="h-8 bg-gray-100 rounded-lg w-24" />
 
-                    <div className="h-8 bg-gray-100 rounded-lg w-24"></div>
-
-                    <div className="h-10 bg-brand-primary rounded-lg w-32"></div>
-
+                    <div className="h-10 bg-brand-primary rounded-lg w-32" />
                   </div>
-
                 </div>
 
               </div>
@@ -286,9 +279,8 @@ export const HeroCarousel: React.FC = () => {
         </div>
       </div>
 
-
       {/* =========================================================
-          SLIDE 3: TEAMS
+          SLIDE 3: BUILD CAPACITY
       ========================================================= */}
       <div
         className={`absolute inset-0 w-full h-full bg-[#333333] transition-opacity duration-1000 ease-in-out ${
@@ -297,35 +289,36 @@ export const HeroCarousel: React.FC = () => {
             : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
 
             {/* Left Content */}
             <div className="flex flex-col justify-center">
 
-              <div className="mb-6 inline-flex items-center gap-2 bg-brand-secondary/15 text-brand-secondary px-3 py-1.5 rounded-full text-sm font-semibold border border-brand-secondary/30">
+              <div className="mb-6 inline-flex items-center gap-2 bg-brand-secondary/10 text-brand-secondary px-3 py-1.5 rounded-full text-sm font-semibold border border-brand-secondary/30">
                 <Radio size={16} />
-                Live Cohort
+                Learn together
               </div>
 
               <h1 className="text-5xl font-bold text-white mb-4">
-                Teams
+                Build capacity together
               </h1>
 
-              <p className="text-lg text-gray-400 mb-8">
-                Collaborative learning for professionals
+              <p className="text-lg text-gray-300 mb-8">
+                Strong communities create stronger futures. Learn with peers,
+                share ideas, and grow together.
               </p>
 
-              <ul className="space-y-4 mb-10 text-gray-300">
+              <ul className="space-y-4 mb-10 text-gray-200">
                 {[
-                  'Everything in Pro',
-                  'Up to 5 team members',
-                  'Team progress dashboard'
+                  'Connect with a community of ambitious Africans',
+                  'Learn from mentors and fellow builders',
+                  'Turn ideas into projects that matter',
                 ].map((text, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <CheckCircle2
                       size={20}
-                      className="text-brand-secondary"
+                      className="text-brand-secondary flex-shrink-0"
                     />
                     {text}
                   </li>
@@ -333,19 +326,17 @@ export const HeroCarousel: React.FC = () => {
               </ul>
 
               <div className="flex items-baseline gap-2 mb-8 text-white">
-
                 <span className="text-4xl font-bold">
-                  ₦49.99
+                  Grow through
                 </span>
 
-                <span className="text-gray-400">
-                  /month
+                <span className="text-gray-300">
+                  shared knowledge
                 </span>
 
                 <span className="ml-2 bg-brand-secondary/15 text-brand-secondary px-2 py-1 rounded text-xs font-semibold">
-                  Save 20% yearly
+                  Your growth is our mission
                 </span>
-
               </div>
 
               <div className="flex items-center gap-4">
@@ -355,20 +346,19 @@ export const HeroCarousel: React.FC = () => {
                   icon={<Zap size={18} fill="currentColor" />}
                   size="lg"
                 >
-                  Get started
+                  Join the movement
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="!bg-transparent border-gray-600 text-white hover:bg-gray-800 !rounded-lg"
+                  className="!bg-transparent !border-white/30 !text-white hover:!bg-white/10 !rounded-lg"
                   size="lg"
                 >
-                  Compare plans
+                  Meet your community
                   <ArrowRight size={18} className="ml-1" />
                 </Button>
 
               </div>
-
             </div>
 
             {/* Right Content */}
@@ -383,15 +373,10 @@ export const HeroCarousel: React.FC = () => {
                 />
 
                 <div className="absolute inset-0 flex items-center justify-center">
-
                   <div className="bg-brand-secondary text-[#333333] px-4 py-2 rounded-full font-bold shadow-lg flex items-center gap-2">
-
-                    <div className="w-2 h-2 rounded-full bg-[#333333] animate-pulse"></div>
-
+                    <div className="w-2 h-2 rounded-full bg-[#333333] animate-pulse" />
                     LIVE NOW
-
                   </div>
-
                 </div>
 
               </div>
@@ -418,9 +403,8 @@ export const HeroCarousel: React.FC = () => {
         </div>
       </div>
 
-
       {/* =========================================================
-          SLIDE 4: CERTIFICATES
+          SLIDE 4: GROW
       ========================================================= */}
       <div
         className={`absolute inset-0 w-full h-full bg-[#333333] transition-opacity duration-1000 ease-in-out ${
@@ -429,7 +413,7 @@ export const HeroCarousel: React.FC = () => {
             : 'opacity-0 z-0 pointer-events-none'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
 
             {/* Left Content */}
@@ -437,47 +421,48 @@ export const HeroCarousel: React.FC = () => {
 
               <div className="flex gap-3 mb-6">
 
-                <div className="inline-flex items-center gap-2 bg-brand-primary/15 text-brand-primary px-3 py-1.5 rounded-full text-sm font-semibold border border-brand-primary/30">
+                <div className="inline-flex items-center gap-2 bg-brand-primary/10 text-brand-primary px-3 py-1.5 rounded-full text-sm font-semibold border border-brand-primary/30">
                   <Award size={16} />
-                  Globally Recognised
+                  Make your progress visible
                 </div>
 
                 <div className="inline-flex items-center gap-2 bg-brand-primary text-[#333333] px-3 py-1.5 rounded-full text-sm font-semibold">
                   <Globe size={16} />
-                  International
+                  Career ready
                 </div>
 
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                Earn certificates <br />
-
+                Turn your skills <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-brand-primary">
-                  recognised worldwide
+                  into opportunity
                 </span>
               </h1>
 
-              <p className="text-md text-gray-400 mb-8 max-w-md">
-                Every free course certificate is accredited by leading international bodies,
-                giving your qualification real-world weight with employers globally.
+              <p className="text-md text-gray-300 mb-8 max-w-md">
+                Keep learning, keep building, and create proof of what you can
+                do. Your skills can open doors across Africa and around the
+                world.
               </p>
 
-              <ul className="space-y-4 mb-10 text-sm text-gray-300">
+              <ul className="space-y-4 mb-10 text-sm text-gray-200">
                 {[
-                  'Accredited by ACTD — Africa Centre for Talent Development',
-                  'Accredited by UKIQ — UK Institute of Qualifications',
-                  'Shareable on LinkedIn, CV & professional portfolios',
-                  'Recognised by 500+ employers across 40 countries'
+                  'Earn certificates as you complete courses',
+                  'Build a portfolio that shows your abilities',
+                  'Share your progress with employers and clients',
+                  'Grow toward the future you want',
                 ].map((text, i) => (
-                  <li key={i} className="flex items-start gap-3">
-
+                  <li
+                    key={i}
+                    className="flex items-start gap-3"
+                  >
                     <CheckCircle
                       size={18}
                       className="text-brand-primary mt-0.5 flex-shrink-0"
                     />
 
                     <span>{text}</span>
-
                   </li>
                 ))}
               </ul>
@@ -489,20 +474,19 @@ export const HeroCarousel: React.FC = () => {
                   icon={<Award size={18} />}
                   size="lg"
                 >
-                  Start earning
+                  Show what you can do
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="!bg-transparent border-gray-600 text-white hover:bg-gray-800 !rounded-lg"
+                  className="!bg-transparent !border-white/30 !text-white hover:!bg-white/10 !rounded-lg"
                   size="lg"
                 >
-                  View plans
+                  Keep growing
                   <ArrowRight size={18} className="ml-1" />
                 </Button>
 
               </div>
-
             </div>
 
             {/* Certificate */}
@@ -511,13 +495,13 @@ export const HeroCarousel: React.FC = () => {
               <div className="w-full max-w-xl bg-[#FFFDF0] rounded-sm p-6 relative shadow-2xl border-[8px] border-brand-primary/40 outline outline-1 outline-offset-[-6px] outline-brand-primary">
 
                 {/* Certificate Corners */}
-                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-brand-primary"></div>
+                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-brand-primary" />
 
-                <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-brand-primary"></div>
+                <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-brand-primary" />
 
-                <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-brand-primary"></div>
+                <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-brand-primary" />
 
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-brand-primary"></div>
+                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-brand-primary" />
 
                 <div className="flex flex-col items-center justify-center text-center p-8">
 
@@ -525,17 +509,17 @@ export const HeroCarousel: React.FC = () => {
                     <Award size={32} />
                   </div>
 
-                  <div className="text-brand-primary text-xs font-bold tracking-[0.2em] mb-4">
+                  <div className="text-[#333333] text-xs font-bold tracking-[0.2em] mb-4">
                     FREE COURSES
                   </div>
 
                   <h2 className="text-3xl font-serif text-gray-800 tracking-wider mb-8">
-                    CERTIFICATE OF ACHIEVEMENT
+                    CERTIFICATE OF SKILL DEVELOPMENT
                   </h2>
 
                   <p className="text-[10px] text-gray-500 max-w-xs mb-2 italic">
-                    This Certificate is Proudly Presented in recognition of academic excellence,
-                    perseverance, and commitment to learning to
+                    This certificate celebrates your commitment to learning,
+                    building practical skills, and growing your potential.
                   </p>
 
                   <h3 className="text-3xl font-serif text-gray-900 italic font-bold mb-4 border-b border-gray-300 pb-2 w-3/4">
@@ -544,15 +528,19 @@ export const HeroCarousel: React.FC = () => {
 
                   <p className="text-[9px] text-gray-500 max-w-sm mb-10 leading-relaxed">
                     For successfully completing the{' '}
-                    <strong>Advanced React & TypeScript Masterclass</strong> and demonstrating
-                    dedication, intellectual curiosity, and commitment to professional growth.
+                    <strong>
+                      Practical Skills Learning Programme
+                    </strong>{' '}
+                    and demonstrating dedication, curiosity, and commitment
+                    to personal and professional growth.
                   </p>
 
                   <div className="flex justify-between w-full px-4 items-end mt-4">
 
+                    {/* Left Signature */}
                     <div className="flex flex-col items-center">
 
-                      <div className="w-32 border-b border-gray-400 mb-2"></div>
+                      <div className="w-32 border-b border-gray-400 mb-2" />
 
                       <span className="text-[10px] font-bold text-gray-800">
                         Dr. Kemi Adeola
@@ -564,7 +552,7 @@ export const HeroCarousel: React.FC = () => {
 
                     </div>
 
-                    {/* UKIQ */}
+                    {/* UKIQ Badge */}
                     <div className="w-16 h-16 rounded-full border-2 border-dashed border-brand-secondary flex items-center justify-center flex-col relative text-brand-secondary">
 
                       <CheckCircle size={16} />
@@ -575,9 +563,10 @@ export const HeroCarousel: React.FC = () => {
 
                     </div>
 
+                    {/* Right Signature */}
                     <div className="flex flex-col items-center">
 
-                      <div className="w-32 border-b border-gray-400 mb-2"></div>
+                      <div className="w-32 border-b border-gray-400 mb-2" />
 
                       <span className="text-[10px] font-bold text-gray-800">
                         Prof. James Briggs
@@ -598,30 +587,74 @@ export const HeroCarousel: React.FC = () => {
         </div>
       </div>
 
-
       {/* =========================================================
           NAVIGATION ARROWS
       ========================================================= */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/30 backdrop-blur-sm border border-gray-400/30 text-gray-800 rounded-full flex items-center justify-center z-20 transition-all cursor-pointer"
+        className="
+          absolute
+          left-4
+          sm:left-8
+          top-1/2
+          -translate-y-1/2
+          w-10
+          h-10
+          md:w-12
+          md:h-12
+          rounded-full
+          flex
+          items-center
+          justify-center
+          z-20
+          transition-all
+          cursor-pointer
+          backdrop-blur-sm
+          bg-white/10
+          hover:bg-brand-primary
+          border
+          border-white/20
+        "
         style={{
-          color: currentSlide >= 2 ? 'white' : '#111827'
+          color: currentSlide >= 2 ? '#FFFFFF' : '#333333',
         }}
+        aria-label="Previous slide"
       >
         <ChevronLeft size={24} />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/30 backdrop-blur-sm border border-gray-400/30 text-gray-800 rounded-full flex items-center justify-center z-20 transition-all cursor-pointer"
+        className="
+          absolute
+          right-4
+          sm:right-8
+          top-1/2
+          -translate-y-1/2
+          w-10
+          h-10
+          md:w-12
+          md:h-12
+          rounded-full
+          flex
+          items-center
+          justify-center
+          z-20
+          transition-all
+          cursor-pointer
+          backdrop-blur-sm
+          bg-white/10
+          hover:bg-brand-primary
+          border
+          border-white/20
+        "
         style={{
-          color: currentSlide >= 2 ? 'white' : '#111827'
+          color: currentSlide >= 2 ? '#FFFFFF' : '#333333',
         }}
+        aria-label="Next slide"
       >
         <ChevronRight size={24} />
       </button>
-
 
       {/* =========================================================
           PAGINATION DOTS
@@ -629,44 +662,37 @@ export const HeroCarousel: React.FC = () => {
       <div className="absolute bottom-8 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
 
         {[0, 1, 2, 3].map((index) => {
-
           let dotColor = 'bg-gray-300';
 
           if (currentSlide === index) {
-
-            if (index === 0) {
+            if (index === 0 || index === 2) {
               dotColor = 'bg-brand-secondary w-6';
-            } else if (index === 1) {
-              dotColor = 'bg-brand-primary w-6';
-            } else if (index === 2) {
-              dotColor = 'bg-brand-secondary w-6';
-            } else if (index === 3) {
+            } else {
               dotColor = 'bg-brand-primary w-6';
             }
-
           } else if (currentSlide >= 2) {
-
-            dotColor = 'bg-gray-600';
-
+            dotColor = 'bg-white/30';
           }
 
           return (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                dotColor
-              } ${
-                currentSlide !== index ? 'w-2' : ''
-              } cursor-pointer`}
+              className={`
+                h-2
+                rounded-full
+                transition-all
+                duration-300
+                ${dotColor}
+                ${currentSlide !== index ? 'w-2' : ''}
+                cursor-pointer
+              `}
               aria-label={`Go to slide ${index + 1}`}
             />
           );
-
         })}
 
       </div>
-
     </div>
   );
 };

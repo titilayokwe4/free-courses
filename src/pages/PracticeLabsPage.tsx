@@ -48,7 +48,7 @@ export const PracticeLabsPage: React.FC = () => {
                 href="#"
                 className={`text-sm font-medium px-1 py-4 ${
                   item === 'Projects' 
-                    ? 'text-gray-900 dark:text-white border-b-2 border-brand-primary' 
+                    ? 'text-gray-900 dark:text-white border-b-2 border-[#00E676]' 
                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
@@ -62,18 +62,22 @@ export const PracticeLabsPage: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-20">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-50 dark:bg-green-900/20 text-[#1ABC9C] rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/20 text-[#00E676] rounded-xl flex items-center justify-center">
               <FlaskConical size={24} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Practice Labs</h1>
-              <p className="text-gray-500 dark:text-gray-400 text-sm">Real work from real learners</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Practice Labs
+              </h1>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Real work from real learners
+              </p>
             </div>
           </div>
           
           <button 
             onClick={() => setIsSubmitModalOpen(true)}
-            className="bg-[#0A0E27] dark:bg-white text-white dark:text-[#0A0E27] px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors cursor-pointer"
+            className="bg-[#0B0F3B] dark:bg-white text-white dark:text-[#0B0F3B] px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:bg-[#060822] dark:hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <Plus size={16} /> Submit a project
           </button>
@@ -85,31 +89,38 @@ export const PracticeLabsPage: React.FC = () => {
             onClick={() => setSelectedCategory('All')}
             className={`px-4 py-1.5 rounded-full text-sm font-medium flex items-center gap-2 transition-all cursor-pointer ${
               selectedCategory === 'All'
-                ? 'bg-brand-primary text-white shadow-sm'
+                ? 'bg-[#00E676] text-white shadow-sm'
                 : 'bg-white dark:bg-[#11143B] border border-gray-200 dark:border-[#23264A] text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1e1e36]'
             }`}
           >
-            All <span className={`text-xs px-1.5 py-0.5 rounded-md ${
+            All 
+            <span className={`text-xs px-1.5 py-0.5 rounded-md ${
               selectedCategory === 'All' 
                 ? 'bg-white/20 text-white' 
                 : 'bg-gray-100 dark:bg-gray-800 text-gray-500'
-            }`}>{getCategoryCount('All')}</span>
+            }`}>
+              {getCategoryCount('All')}
+            </span>
           </button>
+
           {categories.map((cat) => (
             <button 
               key={cat} 
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium flex items-center gap-2 transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-brand-primary text-white shadow-sm'
+                  ? 'bg-[#00E676] text-white shadow-sm'
                   : 'bg-white dark:bg-[#11143B] border border-gray-200 dark:border-[#23264A] text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1e1e36]'
               }`}
             >
-              {cat} <span className={`text-xs ${
+              {cat} 
+              <span className={`text-xs ${
                 selectedCategory === cat 
                   ? 'text-white/80' 
                   : 'text-gray-400 dark:text-gray-500'
-              }`}>{getCategoryCount(cat)}</span>
+              }`}>
+                {getCategoryCount(cat)}
+              </span>
             </button>
           ))}
         </div>
@@ -117,14 +128,20 @@ export const PracticeLabsPage: React.FC = () => {
         {/* Sort Bar */}
         <div className="flex justify-between items-center mb-6">
           <div className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-            <span className="font-bold text-gray-900 dark:text-white">{filteredProjects.length}</span> projects
+            <span className="font-bold text-gray-900 dark:text-white">
+              {filteredProjects.length}
+            </span> projects
           </div>
           
           <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Sort by:</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              Sort by:
+            </span>
+
             <button className="flex items-center gap-2 px-3 py-1.5 border border-gray-200 dark:border-[#23264A] rounded-lg bg-white dark:bg-[#11143B] text-gray-700 dark:text-gray-300 text-sm font-medium">
               Featured <ChevronDown size={14} />
             </button>
+
             <button className="flex items-center gap-2 px-3 py-1.5 border border-gray-200 dark:border-[#23264A] rounded-lg bg-white dark:bg-[#11143B] text-gray-700 dark:text-gray-300 text-sm font-medium">
               All time <ChevronDown size={14} />
             </button>
@@ -135,7 +152,11 @@ export const PracticeLabsPage: React.FC = () => {
         {filteredProjects.length === 0 ? (
           <div className="text-center py-20 bg-white dark:bg-[#11143B] border border-gray-200 dark:border-[#23264A] rounded-3xl p-8">
             <FlaskConical size={40} className="mx-auto text-gray-400 mb-4" />
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">No projects found</h3>
+
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+              No projects found
+            </h3>
+
             <p className="text-gray-500 dark:text-gray-400 text-sm max-w-sm mx-auto">
               No projects have been submitted for the "{selectedCategory}" category yet. Feel free to submit one!
             </p>

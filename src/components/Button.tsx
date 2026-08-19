@@ -17,13 +17,27 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   ...props
 }) => {
-  const baseStyles = 'cursor-pointer inline-flex items-center justify-center gap-2 font-medium transition-colors';
-  
+  const baseStyles =
+    'cursor-pointer inline-flex items-center justify-center gap-2 font-medium transition-colors';
+
   const variants = {
-    primary: 'bg-brand-primary text-white hover:bg-brand-primary-hover',
-    secondary: 'bg-brand-secondary text-background hover:bg-brand-secondary-hover',
-    outline: 'border border-border bg-transparent text-text-primary hover:bg-surface-hover',
-    ghost: 'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface'
+    // Primary: Lime #D6FB61
+    // Dark text provides better contrast than white.
+    primary:
+      'bg-brand-primary text-[#333333] hover:bg-brand-primary-hover',
+
+    // Secondary: Blue #39B1D1
+    // Dark text keeps the button readable.
+    secondary:
+      'bg-brand-secondary text-[#333333] hover:bg-brand-secondary-hover',
+
+    // Outline button
+    outline:
+      'border border-gray-300 bg-transparent text-gray-900 hover:bg-gray-100',
+
+    // Ghost button
+    ghost:
+      'bg-transparent text-gray-600 hover:text-[#333333] hover:bg-gray-100',
   };
 
   const sizes = {
@@ -36,10 +50,17 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${widthClass} ${className} ${disabled ? 'opacity-50 !cursor-not-allowed' : ''}`}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${widthClass} ${className} ${
+        disabled ? 'opacity-50 !cursor-not-allowed' : ''
+      }`}
       {...props}
     >
-      {icon && <span className="w-5 h-5 flex items-center justify-center">{icon}</span>}
+      {icon && (
+        <span className="w-5 h-5 flex items-center justify-center">
+          {icon}
+        </span>
+      )}
+
       {children}
     </button>
   );

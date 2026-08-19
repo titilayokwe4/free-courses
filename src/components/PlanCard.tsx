@@ -6,13 +6,17 @@ interface PlanCardProps {
   isPopular?: boolean;
 }
 
-export const PlanCard: React.FC<PlanCardProps> = ({ title, price, isPopular }) => {
+export const PlanCard: React.FC<PlanCardProps> = ({
+  title,
+  price,
+  isPopular,
+}) => {
   return (
-    <div 
-      className={`rounded-2xl p-8 flex flex-col justify-center relative border transition-all ${
-        isPopular 
-          ? 'bg-[#11143B] border-brand-primary' 
-          : 'bg-[#11143B]/60 border-[#23264A]'
+    <div
+      className={`rounded-2xl p-8 flex flex-col justify-center relative border transition-all duration-300 ${
+        isPopular
+          ? 'bg-surface border-brand-primary shadow-lg shadow-brand-primary/10'
+          : 'bg-surface/60 border-border hover:border-brand-secondary/50 hover:shadow-md'
       }`}
     >
       {isPopular && (
@@ -20,10 +24,19 @@ export const PlanCard: React.FC<PlanCardProps> = ({ title, price, isPopular }) =
           Most Popular
         </div>
       )}
-      <h3 className="text-white text-xl font-bold mb-2">{title}</h3>
-      <div className="text-white font-bold flex items-baseline">
-        <span className="text-4xl">{price}</span>
-        <span className="text-sm text-gray-400 ml-1">/mo</span>
+
+      <h3 className="text-text-primary text-xl font-bold mb-2">
+        {title}
+      </h3>
+
+      <div className="text-text-primary font-bold flex items-baseline">
+        <span className="text-4xl">
+          {price}
+        </span>
+
+        <span className="text-sm text-text-tertiary ml-1">
+          /mo
+        </span>
       </div>
     </div>
   );
